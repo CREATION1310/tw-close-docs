@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<title>The Close Tour — Trade Wings Capital</title>
+<style>
+  :root {
+    --ink: #2a2118; --ink-soft: #5c5147; --paper: #faf9f6; --panel: #f2efe8;
+    --line: #ddd6c9; --brass: #a8823c; --brass-deep: #8a6a2e;
+    --never: #9e2b25; --never-bg: #f7ece9; --ok: #4a6635; --ok-bg: #eef0e4;
+    --scr: #16181d; --scr2: #1e2128; --scr3: #262a33; --scr-line: #333845;
+    --scr-text: #e8eaf0; --scr-soft: #8a8fa3; --scr-link: #6ea8fe; --scr-chip: #2c313c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #ede6da; --ink-soft: #b3a795; --paper: #1c1712; --panel: #262019;
+      --line: #3d3428; --brass: #c9a45c; --brass-deep: #d8b876;
+      --never: #e0766f; --never-bg: #33201d; --ok: #a4bd82; --ok-bg: #242a1c; }
+  }
+  :root[data-theme="dark"] { --ink: #ede6da; --ink-soft: #b3a795; --paper: #1c1712; --panel: #262019;
+    --line: #3d3428; --brass: #c9a45c; --brass-deep: #d8b876;
+    --never: #e0766f; --never-bg: #33201d; --ok: #a4bd82; --ok-bg: #242a1c; }
+  :root[data-theme="light"] { --ink: #2a2118; --ink-soft: #5c5147; --paper: #faf9f6; --panel: #f2efe8;
+    --line: #ddd6c9; --brass: #a8823c; --brass-deep: #8a6a2e;
+    --never: #9e2b25; --never-bg: #f7ece9; --ok: #4a6635; --ok-bg: #eef0e4; }
+
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); margin: 0;
+    font-family: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    font-size: 17px; line-height: 1.6; }
+  .topbar { position: sticky; top: 0; z-index: 10; background: var(--paper);
+    border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; align-items: center; gap: 14px; }
+  .topbar .org { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-weight: 600;
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--brass-deep); white-space: nowrap; }
+  .progress { flex: 1; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .progress i { display: block; height: 100%; width: 0; background: var(--brass); transition: width .35s ease; }
+  .stepnum { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: var(--ink-soft);
+    white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 28px 20px 130px; }
+  .lesson { display: none; }
+  .lesson.active { display: block; animation: rise .35s ease; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .lesson.active { animation: none; } .progress i { transition: none; } }
+
+  .eyebrow { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-size: 12px; font-weight: 700;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--brass-deep); }
+  h1 { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-weight: 700;
+    font-size: clamp(26px, 5.5vw, 34px); line-height: 1.12; margin: 6px 0 14px; text-wrap: balance; }
+  h2 { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-weight: 700; font-size: 22px;
+    margin: 4px 0 12px; text-wrap: balance; }
+  p { max-width: 66ch; margin: 12px 0; }
+  .soft { color: var(--ink-soft); }
+
+  /* ---- replica screens ---- */
+  .screen { position: relative; background: var(--scr); color: var(--scr-text); border-radius: 10px;
+    border: 1px solid var(--scr-line); margin: 18px 0; overflow: hidden;
+    font-family: "Avenir Next", "Avenir", "Segoe UI", "Helvetica Neue", sans-serif; font-size: 13px; line-height: 1.45; }
+  .scr-top { display: flex; align-items: center; gap: 10px; background: var(--scr2);
+    border-bottom: 1px solid var(--scr-line); padding: 8px 12px; }
+  .scr-search { flex: 1; background: var(--scr3); border-radius: 6px; padding: 5px 10px; color: var(--scr-soft); }
+  .scr-body { display: flex; min-height: 120px; }
+  .scr-side { width: 44px; background: var(--scr2); border-right: 1px solid var(--scr-line);
+    display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 10px 0; font-size: 14px; }
+  .scr-side span { opacity: .75; }
+  .scr-side .on { opacity: 1; background: var(--scr3); border-radius: 6px; padding: 2px 6px; }
+  .scr-main { flex: 1; padding: 12px 14px; overflow-x: auto; }
+  .scr-row { display: flex; justify-content: space-between; gap: 10px; padding: 7px 6px;
+    border-bottom: 1px solid var(--scr-line); align-items: center; flex-wrap: wrap; }
+  .scr-row a { color: var(--scr-link); text-decoration: none; }
+  .schip { background: var(--scr-chip); border: 1px solid var(--scr-line); border-radius: 12px;
+    padding: 1px 9px; font-size: 11px; color: var(--scr-text); white-space: nowrap; }
+  .schip.warn { color: #ffb4ab; border-color: #6e3630; }
+  .schip.gold { color: #ffd97a; border-color: #7a6427; }
+  .schip.green { color: #9fdc8f; border-color: #3f6636; }
+  .sbtn { background: var(--scr3); border: 1px solid var(--scr-line); border-radius: 6px;
+    padding: 4px 12px; font-size: 12px; color: var(--scr-text); white-space: nowrap; }
+  .sbtn.blue { background: #2f5fd0; border-color: #2f5fd0; color: #fff; }
+  .panel-h { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--scr-soft);
+    margin: 12px 0 4px; font-weight: 700; }
+  .kv { display: flex; justify-content: space-between; gap: 8px; padding: 3px 6px; }
+  .kv b { font-weight: 400; color: var(--scr-soft); }
+  .kv span { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; }
+
+  /* callout dots */
+  .dot { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: var(--brass);
+    color: #fff; font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-weight: 700; font-size: 12.5px;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 3px rgba(168,130,60,.3); z-index: 2; }
+  .legend { counter-reset: c; padding: 0; margin: 14px 0; list-style: none; }
+  .legend li { position: relative; padding: 7px 0 7px 36px; border-bottom: 1px solid var(--line); max-width: 68ch; }
+  .legend li::before { counter-increment: c; content: counter(c);
+    position: absolute; left: 0; top: 8px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--brass); color: #fff; font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif;
+    font-weight: 700; font-size: 12.5px; display: flex; align-items: center; justify-content: center; }
+  .legend b { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-size: 15px; }
+  .legend .how { display: block; font-size: 14px; color: var(--ink-soft); }
+  kbd { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; background: var(--panel);
+    border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 1px 6px; }
+  .rule { border-left: 4px solid var(--brass); background: var(--panel); padding: 12px 18px;
+    margin: 18px 0; border-radius: 0 6px 6px 0; }
+  .rule.never { border-left-color: var(--never); background: var(--never-bg); }
+  .rule .tag { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--brass-deep); display: block; margin-bottom: 2px; }
+  .rule.never .tag { color: var(--never); }
+  .rule p { margin: 4px 0; }
+
+  .navbtns { position: fixed; bottom: 0; left: 0; right: 0; background: var(--paper);
+    border-top: 1px solid var(--line); padding: 12px 16px; display: flex; gap: 10px;
+    justify-content: space-between; align-items: center; z-index: 10; }
+  .btn { font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif; font-weight: 600; font-size: 15px;
+    border-radius: 6px; padding: 10px 22px; cursor: pointer; border: 1px solid var(--line);
+    background: var(--panel); color: var(--ink); }
+  .btn.primary { background: var(--brass); border-color: var(--brass); color: #fffdf9; }
+  .btn:disabled { opacity: .35; cursor: default; }
+  .btn:focus-visible, .dots i:focus-visible { outline: 2px solid var(--brass-deep); outline-offset: 2px; }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line); cursor: pointer; }
+  .dots i.on { background: var(--brass); }
+</style></head><body><div class="topbar">
+  <span class="org">Trade Wings · The Close Tour</span>
+  <div class="progress" aria-hidden="true"><i id="pbar"></i></div>
+  <span class="stepnum" id="stepnum">1 / 10</span>
+</div>
+
+<div class="wrap">
+
+  <!-- 1 -->
+  <section class="lesson active" data-title="The map">
+    <div class="eyebrow">Stop 1 · The map</div>
+    <h1>Ten minutes, ten screens, and you know the whole building.</h1>
+    <p>This is a guided tour of <strong>our</strong> Close — every screen is drawn from the live Trade Wings org. Use <kbd>→</kbd> and <kbd>←</kbd> or the buttons below. The left icon rail is home base; you'll live in five of its rooms:</p>
+    <div class="screen" aria-label="Replica: Close sidebar and top bar">
+      <div class="scr-top"><span>🔍</span><span class="scr-search">Search…&nbsp;&nbsp;(press <b>Cmd/Ctrl-K</b> anywhere)</span><span>📅</span><span>📞</span><span>❓</span></div>
+      <div class="scr-body">
+        <div class="scr-side">
+          <span class="on" title="Inbox">📥</span><span>🏆</span><span class="on">🗂</span><span>👤</span><span>🗒</span><span>💬</span><span>⚡︎</span><span>📊</span><span>📌</span><span style="margin-top:auto">⚙️</span>
+        </div>
+        <div class="scr-main">
+          <div class="scr-row"><span>📥 <b>Inbox</b> — your communication triage: unanswered SMS, emails, calls, tasks, reminders</span><span class="schip">badge = unhandled</span></div>
+          <div class="scr-row"><span>🏆 <b>Opportunities</b> — the deal board (pipelines and stages)</span></div>
+          <div class="scr-row"><span>🗂 <b>Leads</b> — every merchant; your queues live here as Smart Views</span></div>
+          <div class="scr-row"><span>💬 <b>Conversations</b> — every call recording and message in one stream</span></div>
+          <div class="scr-row"><span>📊 <b>Reports</b> — activity and pipeline numbers (managers mostly)</span></div>
+          <div class="scr-row"><span>⚙️ <b>Settings</b> — one visit on day one: timezone + claim your number</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="soft">Everything else in the rail (Contacts, Activities, Workflows, Voice Agents) exists — you just won't need it daily. If you get lost anywhere: <kbd>Cmd/Ctrl-K</kbd> and type the merchant's name.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="lesson" data-title="Inbox">
+    <div class="eyebrow">Stop 2 · The Inbox</div>
+    <h2>Start every day here. Empty it, don't admire it.</h2>
+    <div class="screen" aria-label="Replica: Inbox">
+      <div class="dot" style="top:44px; left:14px">1</div>
+      <div class="dot" style="top:44px; right:14px">2</div>
+      <div class="dot" style="top:112px; left:210px">3</div>
+      <div class="scr-main" style="padding:14px">
+        <div style="font-size:16px; font-weight:700; margin-bottom:8px">Inbox <span class="schip">Current ▾</span></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+          <span class="schip gold">Primary 22</span><span class="schip">Emails</span><span class="schip">Calls</span>
+          <span class="schip">Messages 19</span><span class="schip">Tasks</span><span class="schip">Reminders 2</span>
+        </div>
+        <div class="scr-row"><span><a href="#0" onclick="return false">Sarah Birnie Interiors</a>, Sarah</span><span class="schip warn">Opt-Out</span><span>Received SMS · "STOP"</span><span class="schip">Potential</span></div>
+        <div class="scr-row"><span><a href="#0" onclick="return false">Ottawa HVAC</a>, Jim</span><span></span><span>Received SMS · "Leave me…"</span><span class="schip">Potential</span></div>
+        <div class="scr-row"><span><a href="#0" onclick="return false">Towns Construction</a>, Shane</span><span></span><span>Missed call · yesterday</span><span class="schip">Potential</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>The tabs split the noise.</b><span class="how">Primary is everything unhandled; Messages is SMS; Reminders are the follow-ups you set yourself. The number is your to-do count, not a decoration.</span></li>
+      <li><b>Each row is one conversation on one merchant.</b><span class="how">Click the name to land on the lead page with the thread open. Handle it, and the row leaves the inbox.</span></li>
+      <li><b>The red Opt-Out chip means the merchant said stop.</b><span class="how">Close already blocks further SMS to them. Your job: confirm the lead's <b>Do Not Call</b> field says <b>Yes</b> (Stop 5 shows where) and never contact them again. No exceptions, no clever workarounds.</span></li>
+    </ol>
+  </section>
+
+  <!-- 3 -->
+  <section class="lesson" data-title="Leads list">
+    <div class="eyebrow">Stop 3 · The Leads list</div>
+    <h2>1,955 merchants, one grid.</h2>
+    <div class="screen" aria-label="Replica: Leads list">
+      <div class="dot" style="top:14px; left:120px">1</div>
+      <div class="dot" style="top:52px; left:14px">2</div>
+      <div class="dot" style="top:52px; right:14px">3</div>
+      <div class="scr-main" style="padding:14px">
+        <div style="font-size:16px; font-weight:700; margin-bottom:8px">Leads ▾ <span class="soft" style="font-size:12px">&nbsp;(click the caret to switch Smart Views)</span></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px">
+          <span class="sbtn">⊕ Add filter</span><span class="schip">1,955 Leads</span><span class="sbtn">↕ Sort</span><span class="sbtn">▥ Columns</span><span class="sbtn">Save as</span>
+        </div>
+        <div class="scr-row"><span><a href="#0" onclick="return false">Maple Ridge Concrete Ltd. (DEMO)</a> · Dino</span><span>📞 ✉️</span><span class="schip">Potential</span></div>
+        <div class="scr-row"><span><a href="#0" onclick="return false">Towns Construction</a> · Shane</span><span>📞 ✉️</span><span class="schip">Potential</span></div>
+        <div class="scr-row"><span><a href="#0" onclick="return false">Gravenhurst Plumbing</a> · Chip</span><span>📞 ✉️</span><span class="schip">Potential</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>The title is a menu.</b><span class="how">Click the caret beside "Leads" to jump between Smart Views — that's how you enter your queues (next stop).</span></li>
+      <li><b>Filters build views; Save as keeps them.</b><span class="how">Any filter combination (status, province, score…) can be saved as your own view. Columns lets you add fields like Priority Score to the grid.</span></li>
+      <li><b>The row icons dial and draft directly.</b><span class="how">Phone and envelope on any row start a call or email without opening the lead — fine for quick touches, but the lead page (Stop 5) is where real work happens.</span></li>
+    </ol>
+  </section>
+
+  <!-- 4 -->
+  <section class="lesson" data-title="Queues">
+    <div class="eyebrow">Stop 4 · Your queues (Smart Views)</div>
+    <h2>Six saved views run your whole day.</h2>
+    <div class="screen" aria-label="Replica: Smart View list">
+      <div class="scr-main" style="padding:14px">
+        <div class="panel-h">Smart Views — pin these four</div>
+        <div class="scr-row"><span>① <b>Queue — Offers Out (Follow-up)</b></span><span class="schip gold">work first</span></div>
+        <div class="scr-row"><span>② <b>Queue — Underwriting</b></span><span class="schip">unblock docs</span></div>
+        <div class="scr-row"><span>③ <b>Queue — New Inquiries (Today)</b></span><span class="schip">same-day reply</span></div>
+        <div class="scr-row"><span>④ <b>Prospecting — Priority</b></span><span class="schip green">1,803 merchants, best first</span></div>
+        <div class="panel-h" style="margin-top:14px">Visibility, not work</div>
+        <div class="scr-row"><span><b>Queue — Renewal Window</b> · <b>Watch — Remittance Risk</b></span><span class="schip">check weekly</span></div>
+        <div class="scr-row"><span><b>DNC — Never Call</b></span><span class="schip warn">181 suppressed — never touched</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>The circled order is the morning order.</b><span class="how">Committed money → stalled files → fresh inquiries → new calling. Don't invert it.</span></li>
+      <li><b>Prospecting — Priority is pre-sorted.</b><span class="how">Highest Priority Score at the top and every Do-Not-Call merchant already excluded. Top-down, no cherry-picking.</span></li>
+      <li><b>DNC — Never Call is a wall, not a list.</b><span class="how">It exists so the suppression list is visible. Nothing in it is ever contacted, by anyone, for any reason.</span></li>
+    </ol>
+    <p class="soft">To pin: open a view via the Leads caret, then use the pin icon in the left rail so it's one click forever.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="lesson" data-title="Lead page">
+    <div class="eyebrow">Stop 5 · The lead page</div>
+    <h2>One merchant, everything known, one screen.</h2>
+    <div class="screen" aria-label="Replica: lead page for the demo merchant">
+      <div class="dot" style="top:12px; right:12px">1</div>
+      <div class="dot" style="top:118px; left:14px">2</div>
+      <div class="dot" style="top:238px; left:14px">3</div>
+      <div class="dot" style="top:64px; right:12px">4</div>
+      <div class="scr-body">
+        <div class="scr-main" style="max-width:46%; border-right:1px solid var(--scr-line)">
+          <div style="font-weight:700; font-size:14px">Maple Ridge Concrete Ltd. (DEMO)</div>
+          <span class="schip">Potential ▾</span>
+          <div class="panel-h">Opportunities · 1</div>
+          <div class="kv"><b>New Funding</b><span class="schip gold">Offer Issued</span></div>
+          <div class="kv"><b>Value</b><span>$40,000 · 50%</span></div>
+          <div class="panel-h">Fields</div>
+          <div class="kv"><b>Purchase Price</b><span>40,000</span></div>
+          <div class="kv"><b>Purchased Amount</b><span>52,000</span></div>
+          <div class="kv"><b>Factor Rate</b><span>1.3</span></div>
+          <div class="kv"><b>Specified %</b><span>15</span></div>
+          <div class="panel-h">Contacts · 1</div>
+          <div class="kv"><b>Dino Rossi</b><span>✉️ 💬 📞</span></div>
+          <div class="panel-h">Custom Fields · lead</div>
+          <div class="kv"><b>Province</b><span>ON</span></div>
+          <div class="kv"><b>Priority Score</b><span>87</span></div>
+          <div class="kv"><b>Do Not Call</b><span>No</span></div>
+        </div>
+        <div class="scr-main">
+          <div style="display:flex; gap:6px; justify-content:flex-end; margin-bottom:8px">
+            <span class="sbtn">📅</span><span class="sbtn">🗒</span><span class="sbtn">✉️</span><span class="sbtn">💬</span><span class="sbtn">📞</span><span class="sbtn">＋</span>
+          </div>
+          <span class="sbtn blue">Summarize Lead</span>
+          <div style="display:flex; gap:8px; margin:10px 0 6px">
+            <span class="schip">All</span><span class="schip">Important</span><span class="schip">Conversations</span><span class="schip">Notes</span>
+          </div>
+          <div class="scr-row"><span>Imported via API</span><span class="schip">9m ago</span></div>
+        </div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>The action row is how you touch the merchant.</b><span class="how">Calendar, note, email, SMS, call, and ＋ for structured activities. Every action logs itself to the feed below — that's the point.</span></li>
+      <li><b>Left column = the facts.</b><span class="how">Status at top (keep it honest, change it the moment reality changes), then deals, economics, contacts, and the lead fields — including <b>Do Not Call</b>, which you check before every outbound touch.</span></li>
+      <li><b>The feed is the merchant's whole history.</b><span class="how">Read it before you dial. <b>Summarize Lead</b> gives you an AI snapshot when the feed is long.</span></li>
+      <li><b>Status dropdown ≠ deal stage.</b><span class="how">The lead status answers "where does this merchant stand with us"; the deal's stage lives on the opportunity (Stop 9).</span></li>
+    </ol>
+  </section>
+
+  <!-- 6 -->
+  <section class="lesson" data-title="Calling">
+    <div class="eyebrow">Stop 6 · Calling</div>
+    <h2>The phone lives in the app — and it checks the clock for you.</h2>
+    <div class="screen" aria-label="Replica: call popover">
+      <div class="dot" style="top:64px; right:20px">1</div>
+      <div class="dot" style="top:96px; right:20px">2</div>
+      <div class="scr-main" style="padding:16px; max-width:420px">
+        <div class="panel-h">Phone — Dino Rossi</div>
+        <div class="scr-row"><span>📞 the office line (office)</span><span class="sbtn blue">Make Call</span></div>
+        <div class="scr-row"><span class="soft">Estimated Local Time</span><span class="schip gold">9:30 PM EDT</span></div>
+        <div class="scr-row"><span class="soft">From</span><span class="schip">Your claimed number</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>Make Call dials through your claimed Trade Wings number.</b><span class="how">Never your cell — an off-system call is an off-record call. First use asks for microphone permission in the browser; allow it.</span></li>
+      <li><b>Estimated Local Time is a compliance instrument.</b><span class="how">Close reads it from the merchant's number. This example says 9:30 PM — outside our 9:00–20:00 window, so this call doesn't happen today. If the chip is outside the window, you're done; set a reminder for the morning.</span></li>
+    </ol>
+    <div class="rule">
+      <span class="tag">After every call</span>
+      <p>The call logs itself; add the one-line outcome on top (facts, in our words). If it was an underwriting or funding conversation, use the structured activity instead — next stop.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="lesson" data-title="SMS & Email">
+    <div class="eyebrow">Stop 7 · SMS &amp; Email</div>
+    <h2>Written words are permanent words.</h2>
+    <div class="screen" aria-label="Replica: SMS composer">
+      <div class="dot" style="top:14px; left:14px">1</div>
+      <div class="dot" style="top:78px; right:16px">2</div>
+      <div class="scr-main" style="padding:14px; max-width:480px">
+        <div class="kv"><b>From</b><span>Your claimed number</span></div>
+        <div class="kv"><b>To</b><span>Dino Rossi · the office line</span></div>
+        <div style="background:var(--scr3); border-radius:6px; min-height:56px; margin:8px 0; padding:8px; color:var(--scr-soft)">Type your message…</div>
+        <div style="display:flex; justify-content:flex-end; gap:8px"><span class="sbtn">Templates ▾</span><span class="sbtn blue">Send</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>From must be your claimed number.</b><span class="how">If the From line shows anything else, stop and fix your setup (Stop 10) before sending.</span></li>
+      <li><b>Templates ▾ is where approved copy will live.</b><span class="how">Lifecycle SMS and email templates are coming; until then you write by hand — advance, merchant, factor rate, remittance. Never the l-words. Every message is discoverable.</span></li>
+    </ol>
+    <div class="rule never">
+      <span class="tag">If a reply says stop</span>
+      <p>Any variation — STOP, unsubscribe, "leave me alone" — means: set <b>Do Not Call = Yes</b> with the reason on the lead, right then. Close blocks their SMS automatically; the field makes it absolute across calls too.</p>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="lesson" data-title="Activities">
+    <div class="eyebrow">Stop 8 · Structured activities</div>
+    <h2>The ＋ menu is the legal record.</h2>
+    <div class="screen" aria-label="Replica: plus menu and Underwriting Decision form">
+      <div class="scr-body">
+        <div class="scr-main" style="max-width:44%; border-right:1px solid var(--scr-line)">
+          <div class="panel-h">＋ More actions</div>
+          <div class="scr-row"><span>🗒 Note</span></div>
+          <div class="scr-row"><span>📞 Log a call</span></div>
+          <div class="panel-h">Custom activities</div>
+          <div class="scr-row"><span><b>Broker Touch</b></span></div>
+          <div class="scr-row"><span><b>Funding Confirmation Call</b></span></div>
+          <div class="scr-row"><span><b>Underwriting Decision</b></span></div>
+        </div>
+        <div class="scr-main">
+          <div class="panel-h">Underwriting Decision — draft</div>
+          <div class="kv"><b>Decision</b><span class="schip">Choose value ▾</span></div>
+          <div class="kv"><b>Internal Risk Grade</b><span class="schip">Choose value ▾</span></div>
+          <div class="kv"><b>Conditions</b><span class="schip">text</span></div>
+          <div class="kv"><b>s.347 Screen Done</b><span class="schip">Choose value ▾</span></div>
+          <div style="display:flex; gap:8px; margin-top:10px"><span class="sbtn blue">Done</span><span class="sbtn">Save draft</span></div>
+        </div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>Underwriting Decision</b> — every decision, approvals <i>and</i> declines, with grade and conditions. Filed the day it's made.</li>
+      <li><b>Funding Confirmation Call</b> — mandatory before any wire: terms and specified percentage confirmed verbally, recording <i>reference</i> logged (never the audio file).</li>
+      <li><b>Broker Touch</b> — every referral-partner conversation, topic and summary.</li>
+    </ol>
+    <p class="soft">Plain notes are for everything else: facts, dates, amounts, quotes. Write each one as if the merchant will read it — they can lawfully ask to.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="lesson" data-title="Deals">
+    <div class="eyebrow">Stop 9 · Deals (Opportunities)</div>
+    <h2>The board shows the money; the stages show the truth.</h2>
+    <div class="screen" aria-label="Replica: New Funding pipeline stages">
+      <div class="scr-main" style="padding:14px">
+        <div class="panel-h">New Funding — stage rail</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px">
+          <span class="schip">Application Received</span><span class="schip">Docs Collection</span>
+          <span class="schip">Underwriting Review</span><span class="schip gold">Offer Issued</span>
+          <span class="schip">MPSA Out for Signature</span><span class="schip">Signed — Pre-Funding Checks</span>
+          <span class="schip warn">PPSA Registered ⛩</span><span class="schip green">Funded</span>
+        </div>
+        <div class="panel-h" style="margin-top:14px">On the demo lead</div>
+        <div class="scr-row"><span><b>$40,000</b> · 50% · New Funding</span><span class="schip gold">Offer Issued</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>Open the opportunity the moment a deal is real.</b><span class="how">On the lead: Opportunities panel → ＋. Pick the pipeline (New Funding for first advances, Renewals for repeat) and drag it forward as reality moves.</span></li>
+      <li><b>Offer Issued requires the economics.</b><span class="how">Purchase Price, Purchased Amount, Factor Rate, Specified Percentage, Remittance Frequency — on the opportunity before the offer goes out. No numbers, no offer.</span></li>
+      <li><b>The torii gate is PPSA Registered.</b><span class="how">Nothing passes it to Funded until the registration number and date are recorded. Urgent wire? The registration is more urgent.</span></li>
+    </ol>
+  </section>
+
+  <!-- 10 -->
+  <section class="lesson" data-title="Day one">
+    <div class="eyebrow">Stop 10 · Day-one setup &amp; shortcuts</div>
+    <h2>Five minutes of setup, then go.</h2>
+    <div class="screen" aria-label="Replica: phone settings">
+      <div class="scr-main" style="padding:14px">
+        <div class="panel-h">Settings → Phone &amp; Voice → Phone Numbers</div>
+        <div class="scr-row"><span><b>Sharon — Trade Wings</b> (number in Close)</span><span class="sbtn">Claim</span></div>
+        <div class="scr-row"><span><b>Rob — Trade Wings</b> (number in Close)</span><span class="sbtn">Claim</span></div>
+        <div class="scr-row"><span><b>Alan — Trade Wings</b> (number in Close)</span><span class="sbtn">Claim</span></div>
+        <div class="scr-row"><span><b>Max — Trade Wings</b> (number in Close)</span><span class="sbtn">Claim</span></div>
+      </div>
+    </div>
+    <ol class="legend">
+      <li><b>Claim the number with your name on it</b>, set it as default caller ID.</li>
+      <li><b>Settings → Your Account → timezone America/Toronto.</b></li>
+      <li><b>Pin the four queue views</b> (Stop 4) via the Leads caret + the pin icon.</li>
+    </ol>
+    <p>Three keys worth learning on day one: <kbd>Cmd/Ctrl-K</kbd> jumps to any merchant, <kbd>?</kbd> opens Close's full shortcut list, and <kbd>Esc</kbd> backs out of any composer or popover.</p>
+    <div class="rule">
+      <span class="tag">Where the rules live</span>
+      <p>This was the tour — the standing rulebook is <a href="https://claude.ai/code/artifact/0e6e2770-63de-4ee8-9be8-d35c79641f2b"><b>SOP-CLOSE-001</b></a>: language rules, calling windows, DNC procedure, escalation. Bookmark it. Then go empty that inbox. 🥂</p>
+    </div>
+  </section>
+</div>
+
+<div class="navbtns">
+  <button class="btn" id="prev">← Back</button>
+  <div class="dots" id="dots" role="tablist" aria-label="Tour stops"></div>
+  <button class="btn primary" id="next">Next →</button>
+</div>
+
+<script>
+(function () {
+  var lessons = Array.prototype.slice.call(document.querySelectorAll('.lesson'));
+  var cur = 0;
+  var pbar = document.getElementById('pbar');
+  var stepnum = document.getElementById('stepnum');
+  var dots = document.getElementById('dots');
+  var prev = document.getElementById('prev');
+  var next = document.getElementById('next');
+  lessons.forEach(function (l, i) {
+    var d = document.createElement('i');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('tabindex', '0');
+    d.setAttribute('aria-label', l.getAttribute('data-title'));
+    d.addEventListener('click', function () { go(i); });
+    d.addEventListener('keydown', function (e) { if (e.key === 'Enter') go(i); });
+    dots.appendChild(d);
+  });
+  var dotEls = Array.prototype.slice.call(dots.children);
+  function go(i) {
+    if (i < 0 || i >= lessons.length) return;
+    lessons[cur].classList.remove('active');
+    cur = i;
+    lessons[cur].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    render();
+  }
+  function render() {
+    pbar.style.width = ((cur + 1) / lessons.length * 100) + '%';
+    stepnum.textContent = (cur + 1) + ' / ' + lessons.length;
+    dotEls.forEach(function (d, i) { d.classList.toggle('on', i <= cur); });
+    prev.disabled = cur === 0;
+    next.textContent = cur === lessons.length - 1 ? 'Done ✓' : 'Next →';
+    next.disabled = false;
+  }
+  prev.addEventListener('click', function () { go(cur - 1); });
+  next.addEventListener('click', function () {
+    if (cur === lessons.length - 1) { next.textContent = 'Toured 🥂'; next.disabled = true; return; }
+    go(cur + 1);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') go(cur + 1);
+    if (e.key === 'ArrowLeft') go(cur - 1);
+  });
+  render();
+})();
+</script>
+
+</body></html>

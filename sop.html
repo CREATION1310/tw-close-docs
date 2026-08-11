@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en"><head><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta charset="utf-8">
+<title>Close CRM SOP — Trade Wings Capital</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --panel: #f5f5f7;
+    --ink: #1d1d1f;
+    --soft: #6e6e73;
+    --hair: #d2d2d7;
+    --accent: #0071e3;
+    --red: #d70015;
+    --red-bg: #fff5f4;
+    --green: #1d7d33;
+    --green-bg: #f2f8f2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000; --panel: #1c1c1e; --ink: #f5f5f7; --soft: #86868b;
+      --hair: #3a3a3c; --accent: #2997ff; --red: #ff453a; --red-bg: #2a1a18;
+      --green: #30d158; --green-bg: #16251a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #000000; --panel: #1c1c1e; --ink: #f5f5f7; --soft: #86868b;
+    --hair: #3a3a3c; --accent: #2997ff; --red: #ff453a; --red-bg: #2a1a18;
+    --green: #30d158; --green-bg: #16251a;
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff; --panel: #f5f5f7; --ink: #1d1d1f; --soft: #6e6e73;
+    --hair: #d2d2d7; --accent: #0071e3; --red: #d70015; --red-bg: #fff5f4;
+    --green: #1d7d33; --green-bg: #f2f8f2;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 22px 96px; }
+  .masthead { padding: 56px 0 8px; }
+  .org {
+    font-size: 13px; font-weight: 600; letter-spacing: .01em;
+    color: var(--accent); text-transform: none;
+  }
+  h1 {
+    font-size: clamp(30px, 5.5vw, 40px); font-weight: 700;
+    letter-spacing: -0.015em; line-height: 1.08; margin: 8px 0 10px; text-wrap: balance;
+  }
+  .lede { font-size: 19px; color: var(--soft); line-height: 1.45; margin: 0 0 22px; max-width: 60ch; }
+  .doc-control { display: flex; flex-wrap: wrap; gap: 8px; }
+  .doc-control span {
+    font-size: 12px; font-weight: 500; color: var(--soft);
+    background: var(--panel); border-radius: 100px; padding: 4px 12px;
+    font-variant-numeric: tabular-nums;
+  }
+  h2 {
+    font-size: 22px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25;
+    margin: 56px 0 8px; padding-top: 24px; border-top: 1px solid var(--hair);
+    text-wrap: balance;
+  }
+  h2 .sec { color: var(--soft); font-weight: 500; margin-right: 8px; font-variant-numeric: tabular-nums; }
+  h3 { font-size: 17px; font-weight: 600; margin: 24px 0 4px; }
+  p { margin: 12px 0; max-width: 66ch; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  .toc {
+    background: var(--panel); border: none; border-radius: 14px;
+    padding: 20px 24px; margin: 26px 0 0; columns: 2; column-gap: 32px;
+  }
+  @media (max-width: 560px) { .toc { columns: 1; } }
+  .toc a {
+    display: block; color: var(--ink); font-size: 14px; font-weight: 500;
+    padding: 5px 0; break-inside: avoid;
+  }
+  .toc a:hover { color: var(--accent); text-decoration: none; }
+  .toc .sec { color: var(--soft); font-weight: 400; margin-right: 8px; font-variant-numeric: tabular-nums; }
+  table {
+    border-collapse: collapse; width: 100%;
+    font-size: 14.5px; line-height: 1.45; margin: 14px 0;
+  }
+  .table-scroll { overflow-x: auto; border-radius: 12px; }
+  th {
+    font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--soft); text-align: left; padding: 8px 12px 6px;
+    border-bottom: 1px solid var(--hair); white-space: nowrap;
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { white-space: nowrap; }
+  .field, .status {
+    font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px; background: var(--panel); border: none; border-radius: 6px;
+    padding: 2px 8px; white-space: nowrap;
+  }
+  .rule {
+    background: var(--panel); border: none; border-left: none;
+    padding: 16px 20px; margin: 18px 0; border-radius: 14px;
+  }
+  .rule .tag {
+    font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: none;
+    color: var(--accent); display: block; margin-bottom: 4px;
+  }
+  .rule.never { background: var(--red-bg); }
+  .rule.never .tag { color: var(--red); }
+  .rule p { margin: 4px 0; }
+  ol, ul { padding-left: 24px; max-width: 64ch; }
+  li { margin: 8px 0; }
+  li::marker { color: var(--soft); font-weight: 500; }
+  .say { background: var(--green-bg); color: var(--green); font-weight: 500; }
+  .dont { background: var(--red-bg); color: var(--red); font-weight: 500; }
+  .card {
+    background: var(--panel); border: none; border-radius: 14px;
+    padding: 18px 22px; margin: 16px 0;
+  }
+  .footer {
+    margin-top: 72px; padding-top: 18px; border-top: 1px solid var(--hair);
+    font-size: 12px; color: var(--soft); font-variant-numeric: tabular-nums;
+  }
+  @media print {
+    body { font-size: 12px; }
+    .toc { columns: 2; }
+    h2 { break-after: avoid; }
+    tr, .rule, .card { break-inside: avoid; }
+  }
+</style></head><body><div class="wrap">
+  <header class="masthead">
+    <div class="org">Trade Wings Capital</div>
+    <h1>Close CRM — Standard Operating Procedure</h1>
+    <p class="lede">How we work merchants in Close: the words we use, the queues we run, the records we build. Close is our sales and engagement layer — Kesef holds the money. Every screen we touch should read like something we would hand to a court, because one day we might.</p>
+    <div class="doc-control">
+      <span>SOP-CLOSE-001</span><span>v1.2 · 2026-08-10</span><span>Owner: J. Friedman</span><span>Applies to: all Close users</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Contents">
+    <a href="#s1"><span class="sec">§1</span>Purpose &amp; principles</a>
+    <a href="#s2"><span class="sec">§2</span>Day-one setup</a>
+    <a href="#s3"><span class="sec">§3</span>Language rules</a>
+    <a href="#s4"><span class="sec">§4</span>Daily rhythm</a>
+    <a href="#s5"><span class="sec">§5</span>Lead lifecycle</a>
+    <a href="#s6"><span class="sec">§6</span>Pipelines &amp; stages</a>
+    <a href="#s7"><span class="sec">§7</span>Logging &amp; activities</a>
+    <a href="#s8"><span class="sec">§8</span>Data rules</a>
+    <a href="#s9"><span class="sec">§9</span>Calls, SMS &amp; email</a>
+    <a href="#s10"><span class="sec">§10</span>Escalation</a>
+    <a href="#s11"><span class="sec">§11</span>Quick reference</a>
+  </nav>
+
+  <h2 id="s1"><span class="sec">§1</span>Purpose &amp; principles</h2>
+  <p>Trade Wings Capital purchases future receivables from Canadian merchants. We are not a bank and we do not lend — and our records must never suggest otherwise. Three principles govern everything in this document:</p>
+  <ol>
+    <li><strong>Close is the engagement layer.</strong> Prospecting, applications, underwriting communication, offers, and renewals live in Close. Money movement, remittance, and servicing live in Kesef (use the <span class="field">Open in Kesef</span> button on any lead).</li>
+    <li><strong>Every record is a legal record.</strong> Notes, calls, emails, and field entries are discoverable. Write facts, in our vocabulary, as if opposing counsel will read them — clean records are what protect the company and the merchant.</li>
+    <li><strong>Merchants are two tracks.</strong> Cooperative merchants get service and renewal offers; a merchant showing remittance friction moves to <span class="status">Watch — Remittance Risk</span> and gets escalated, not chased harder. Selling and pressure never mix.</li>
+  </ol>
+
+  <h2 id="s2"><span class="sec">§2</span>Day-one setup</h2>
+  <ol>
+    <li><strong>Accept the invite</strong> sent to your <strong>@twcapital.ca</strong> address and set a strong password.</li>
+    <li>Settings → Your Account → timezone: <strong>America/Toronto</strong>.</li>
+    <li>Settings → Phone &amp; Voice → Phone Numbers: claim the number <strong>labeled with your name</strong> ("Sharon — Trade Wings", "Rob — Trade Wings", "Alan — Trade Wings", "Max — Trade Wings") and set it as your default caller ID.</li>
+    <li>Pin your views: <span class="field">Queue — New Inquiries (Today)</span>, <span class="field">Queue — Underwriting</span>, <span class="field">Queue — Offers Out (Follow-up)</span>, <span class="field">Prospecting — Priority</span>.</li>
+    <li>Read §3 twice. It is the only section where a mistake can't be edited afterward.</li>
+  </ol>
+
+  <h2 id="s3"><span class="sec">§3</span>Language rules</h2>
+  <p>We purchase receivables at a discount; the merchant remits a specified percentage of future sales until the purchased amount is retrieved. That structure is why our agreements work under Canadian law — and it collapses if our own records describe it as lending.</p>
+  <div class="table-scroll"><table>
+    <tr><th>Say</th><th>Never say</th></tr>
+    <tr><td class="say">advance · funding</td><td class="dont">loan</td></tr>
+    <tr><td class="say">merchant</td><td class="dont">borrower</td></tr>
+    <tr><td class="say">funder · purchaser</td><td class="dont">lender</td></tr>
+    <tr><td class="say">factor rate</td><td class="dont">interest, interest rate</td></tr>
+    <tr><td class="say">remittance · retrieval</td><td class="dont">payback, repayment</td></tr>
+    <tr><td class="say">purchase price · purchased amount</td><td class="dont">cost of borrowing</td></tr>
+    <tr><td class="say">estimated retrieval term</td><td class="dont">loan term, amortization</td></tr>
+  </table></div>
+  <div class="rule never">
+    <span class="tag">Hard rule</span>
+    <p>The right-hand column never appears in anything you type — notes, emails, SMS, field values, nicknames, anywhere. If a merchant says "so what's the interest on this loan?", answer in our words: "It's a purchase, not a loan — you're selling us $52,000 of future sales for $40,000 today, and there's no interest rate because there's no borrowing." Never repeat their phrasing back.</p>
+  </div>
+  <p>A receivables purchase has <strong>no fixed term</strong>. Give estimates only, always labeled as estimates: "most merchants retrieve in roughly eight to ten months, but it moves with your sales."</p>
+
+  <h2 id="s4"><span class="sec">§4</span>Daily rhythm</h2>
+  <p>Work the queues in this order every morning. The order is triage: committed work before new work.</p>
+  <ol>
+    <li><span class="field">Queue — Offers Out (Follow-up)</span> — money on the table. Chase signatures and answer objections first.</li>
+    <li><span class="field">Queue — Underwriting</span> — files waiting on documents or decisions. Unblock them: one missing bank month stalls everything.</li>
+    <li><span class="field">Queue — New Inquiries (Today)</span> — respond same-day, ideally within the hour.</li>
+    <li><span class="field">Prospecting — Priority</span> — net-new outreach, worked top-down. The list is sorted by <span class="field">Priority Score</span>; do not cherry-pick.</li>
+  </ol>
+  <div class="rule">
+    <span class="tag">Before every outbound call</span>
+    <p>Check <span class="field">Do Not Call</span> on the lead. If it is <strong>Yes</strong>, stop — no call, no SMS, no exception, regardless of who asks. See §9.</p>
+  </div>
+
+  <h2 id="s5"><span class="sec">§5</span>Lead lifecycle</h2>
+  <p>The lead status answers one question: <em>where does this merchant stand with us overall?</em> Deal-by-deal progress lives on opportunities (§6). Move the status the moment reality changes — a stale status is a false record.</p>
+  <div class="table-scroll"><table>
+    <tr><th>Status</th><th>Means</th><th>Exit when</th></tr>
+    <tr><td><span class="status">Potential</span></td><td>Imported prospect, not yet worked</td><td>First real conversation → <span class="status">Working</span></td></tr>
+    <tr><td><span class="status">New Inquiry</span></td><td>Merchant reached out to us</td><td>Same-day response → <span class="status">Working</span></td></tr>
+    <tr><td><span class="status">Working</span></td><td>Live conversation, no application yet</td><td>Application sent → <span class="status">Application Out</span></td></tr>
+    <tr><td><span class="status">Application Out</span></td><td>Application + doc request with merchant</td><td>Docs in → <span class="status">Underwriting</span></td></tr>
+    <tr><td><span class="status">Underwriting</span></td><td>File under review</td><td>Decision recorded (§7) → offer or decline</td></tr>
+    <tr><td><span class="status">Active Merchant</span></td><td>Funded and remitting</td><td>Retrieval progresses → <span class="status">Renewal Window</span></td></tr>
+    <tr><td><span class="status">Renewal Window</span></td><td>Eligible for a renewal offer</td><td>Renewal opportunity opened (§6)</td></tr>
+    <tr><td><span class="status">Watch — Remittance Risk</span></td><td>Remittance friction on an active advance</td><td>Escalated to management — reps stop selling</td></tr>
+    <tr><td><span class="status">Declined</span> / <span class="status">Merchant Withdrew</span> / <span class="status">Bad Fit</span></td><td>Closed, with the reason in a note</td><td>Re-engage only on new facts</td></tr>
+  </table></div>
+
+  <h2 id="s6"><span class="sec">§6</span>Pipelines &amp; stages</h2>
+  <p>Open an opportunity when there is a concrete deal to pursue. Four pipelines, four jobs:</p>
+  <h3>New Funding — a merchant's first advance</h3>
+  <p>Stages run: <span class="status">Application Received</span> → <span class="status">Docs Collection</span> → <span class="status">Underwriting Review</span> → <span class="status">Offer Issued</span> → <span class="status">MPSA Out for Signature</span> → <span class="status">Signed — Pre-Funding Checks</span> → <span class="status">PPSA Registered</span> → <span class="status">Funded</span>.</p>
+  <div class="rule never">
+    <span class="tag">Hard rule</span>
+    <p>Nothing reaches <span class="status">Funded</span> before <span class="status">PPSA Registered</span> — the registration number and date must be on the opportunity first. If the wire is urgent, the registration is more urgent.</p>
+  </div>
+  <p>At <span class="status">Offer Issued</span>, the opportunity must carry <span class="field">Purchase Price</span>, <span class="field">Purchased Amount</span>, <span class="field">Factor Rate</span>, <span class="field">Specified Percentage</span>, and <span class="field">Remittance Frequency</span>. An offer without recorded economics doesn't exist.</p>
+  <h3>Renewals</h3>
+  <p><span class="status">Eligibility Review</span> → <span class="status">Renewal Offer Issued</span> → <span class="status">MPSA Amendment Out</span> → <span class="status">Funded — Renewal</span>. Check the Renewal record's <span class="field">Retrieval Percent Complete — Derived</span> before offering; renewing too early is a compliance question, not a sales win.</p>
+  <h3>Broker Partnerships</h3>
+  <p>Recruiting referral partners (ISOs). Log every touch as a <span class="field">Broker Touch</span> activity. Partners never get promised approval outcomes.</p>
+  <h3>Funder Placement</h3>
+  <p>Files we place with outside funders when they're not for our book. Each submission is a <span class="field">Funder Submission</span> record — funder name, date, status, offer economics.</p>
+
+  <h2 id="s7"><span class="sec">§7</span>Logging &amp; activities</h2>
+  <p>If it isn't in Close, it didn't happen. Log every substantive interaction the same day, in the structured activity when one fits:</p>
+  <ul>
+    <li><span class="field">Underwriting Decision</span> — every decision, including declines: decision, internal risk grade, conditions, s.347 screen. The decline you log cleanly today is the discrimination-claim defence five years from now.</li>
+    <li><span class="field">Funding Confirmation Call</span> — mandatory before every wire: confirm the terms and the specified percentage verbally, record the call, and store the recording <em>reference</em> — never the audio file itself.</li>
+    <li><span class="field">Broker Touch</span> — every partner conversation: topic and summary.</li>
+  </ul>
+  <p>Free-form notes: facts, dates, amounts, quotes. No speculation about a merchant's character or finances beyond what documents show. Write every note as if the merchant will read it — under Canadian privacy law, they can ask to.</p>
+
+  <h2 id="s8"><span class="sec">§8</span>Data rules</h2>
+  <div class="rule never">
+    <span class="tag">Never enters Close</span>
+    <p>Bank statement PDFs · account numbers · SINs · credit bureau reports or scores · card numbers · recordings as files. Close holds <em>derived numbers only</em> — the <span class="field">Bank Statement</span> record takes totals and counts (deposits, NSF count, negative days, balances), nothing else. Documents live in the underwriting document system; Kesef holds the money data.</p>
+  </div>
+  <p>Field discipline by stage: legal name and <span class="field">Province</span> by <span class="status">Application Out</span>; bank-derived numbers by <span class="status">Underwriting Review</span>; full economics by <span class="status">Offer Issued</span>; <span class="field">PPSA Registration Number</span> and date before <span class="status">Funded</span>. <span class="field">Province</span> drives where we register — get it right the first time.</p>
+
+  <h2 id="s9"><span class="sec">§9</span>Calls, SMS &amp; email</h2>
+  <p>Three channels, one rule set: every touch comes from your claimed Close identity, lands on the lead's timeline, and reads well in front of a judge. Pick the channel by weight — <strong>call for substance, text for logistics, email for detail and documents.</strong></p>
+
+  <h3>Calls</h3>
+  <ul>
+    <li>All calls go through <strong>your claimed Close number</strong>. Personal cells are never used for merchant contact — an off-system call is an off-record call.</li>
+    <li>Calling hours: 9:00–20:00 in the <em>merchant's</em> timezone, Monday–Saturday. No Sunday calls. Close shows the merchant's estimated local time in the dialer — look before you dial.</li>
+    <li>Voicemail counts as a recording: name, company, callback number, under 20 seconds, our vocabulary only.</li>
+  </ul>
+
+  <h3>SMS</h3>
+  <ul>
+    <li>Text from your claimed number, inside calling hours, for <strong>logistics only</strong>: confirmations, reschedules, "sent you the checklist," quick nudges. Never discuss terms, amounts, or economics by text.</li>
+    <li>Text only merchants with a live inquiry or existing relationship, identify yourself ("Sharon at Trade Wings"), and answer inbound texts the same business day.</li>
+    <li>Any stop-flavored reply — STOP, unsubscribe, "leave me alone" — is a DNC event: run the procedure below immediately. Close also blocks their SMS automatically.</li>
+    <li>Use approved templates when they exist (Templates ▾ in the composer). Personalize freely; never touch the vocabulary.</li>
+  </ul>
+
+  <h3>Email</h3>
+  <ul>
+    <li>Email from your Close-connected address for anything with detail: document requests, summaries of a call, next-steps recaps. The thread lives on the lead — no side-channel inboxes.</li>
+    <li>Commercial emails identify Trade Wings and you, and carry an unsubscribe that is honored the moment it's used (that's CASL, and it's not optional).</li>
+    <li><strong>Documents:</strong> never invite bank statements into your own thread — point merchants at the underwriting intake channel. If a merchant emails you statements anyway, move them to the document system per §8 and don't re-share them in the thread.</li>
+    <li>Offers and legal terms travel in the MPSA and offer documents — an email restates where to sign, never re-negotiates the numbers.</li>
+  </ul>
+
+  <h3>Do Not Call — the absolute</h3>
+  <ul>
+    <li><span class="field">Do Not Call</span> = <strong>Yes</strong> is absolute across all three channels. These leads are visible in <span class="field">DNC — Never Call</span> so the suppression list is known, not hidden. They are excluded from prospecting; never work around it.</li>
+    <li>If any merchant asks to stop being contacted — in any words, on any channel — set <span class="field">Do Not Call</span> to Yes and fill <span class="field">DNC Reason</span> <em>during the conversation</em>, confirm it back to them ("you won't hear from us again"), and end politely. There is no save attempt on a DNC request.</li>
+  </ul>
+
+  <h2 id="s10"><span class="sec">§10</span>Escalation</h2>
+  <div class="table-scroll"><table>
+    <tr><th>Situation</th><th>Action</th></tr>
+    <tr><td>s.347 screen = <span class="status">Reviewed — Flagged</span></td><td>Stop the file. No offer, no funding, until counsel clears it. Escalate to Jason same-day.</td></tr>
+    <tr><td>Merchant mentions a lawyer, complaint, or regulator</td><td>Stop selling. Log verbatim facts. Escalate to Jason same-day. Do not argue or negotiate.</td></tr>
+    <tr><td>Active merchant showing remittance friction</td><td>Move lead to <span class="status">Watch — Remittance Risk</span>, note the facts, escalate. Reps do not chase remittance.</td></tr>
+    <tr><td>Deletion of anything seems needed</td><td>It isn't. Nothing is deleted in Close — statuses close, records stay. Escalate if unsure.</td></tr>
+    <tr><td>A field, view, or automation seems wrong</td><td>Don't improvise a workaround — flag it to Jason. The system is the record; side-channels break it.</td></tr>
+  </table></div>
+
+  <h2 id="s11"><span class="sec">§11</span>Quick reference</h2>
+  <div class="card">
+    <p><strong>Morning order:</strong> Offers Out → Underwriting → New Inquiries → Prospecting — Priority (top-down).</p>
+    <p><strong>Before any call:</strong> DNC check. <strong>Before any offer:</strong> economics fields filled. <strong>Before any wire:</strong> PPSA registered + confirmation call logged.</p>
+    <p><strong>Words:</strong> advance, merchant, purchase price, purchased amount, factor rate, specified percentage, remittance, retrieval. Nothing from the never-say column, ever.</p>
+    <p><strong>When unsure:</strong> log the facts, escalate to Jason, and don't delete anything.</p>
+  </div>
+
+  <div class="footer">
+    SOP-CLOSE-001 · v1.2 · 2026-08-10 · Trade Wings Capital — internal · Questions and change requests: Jason Friedman
+  </div>
+</div>
+
+</body></html>
