@@ -16,7 +16,7 @@ Also worth browsing: `example-skills@anthropic-agent-skills` (skill-creator, MCP
 
 ### 2. [anthropics/claude-code-action](https://github.com/anthropics/claude-code-action) — @claude on GitHub (8.8k★)
 Mention `@claude` in any issue or PR comment and Claude answers questions, reviews, fixes, and pushes — no app open. Pairs perfectly with the security-review Action already in this repo.
-The workflow is already staged in this repo at `.github/workflows/claude.yml` (dormant). To arm it: install the [Claude GitHub App](https://github.com/apps/claude) on the repo, add repo secret `ANTHROPIC_API_KEY`, and set repo variable `ENABLE_CLAUDE_MENTION=true`. (Running `/install-github-app` inside the Claude Code TUI automates the app + secret; add the variable yourself.)
+The workflow is live in this repo at `.github/workflows/claude.yml`, authenticated with a Claude subscription via the `CLAUDE_CODE_OAUTH_TOKEN` secret (from `claude setup-token`) rather than a metered API key, and gated on the `ENABLE_CLAUDE_MENTION` repo variable. Installing the [Claude GitHub App](https://github.com/apps/claude) is optional — it gives the bot a proper identity; without it the action uses the workflow token.
 
 ### 3. [wshobson/agents](https://github.com/wshobson/agents) — the specialist bench (39.5k★)
 The canonical subagent collection, now a full marketplace: 202 agents, 183 skills, 105 commands, 16 orchestrators. Install only the packs you need.
