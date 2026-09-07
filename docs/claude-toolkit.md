@@ -17,11 +17,11 @@ Set up 2026-09-07. Every source below was verified against the canonical repo / 
 - **`.github/workflows/security-review.yml`** — the Anthropic security-review Action on every PR. It ships dormant (job skips) so nothing turns red before you configure it. Activate with two clicks:
   1. *Settings → Secrets and variables → Actions → New repository secret*: `CLAUDE_API_KEY` — an Anthropic API key enabled for Claude API + Claude Code.
   2. *Variables tab → New repository variable*: `ENABLE_SECURITY_REVIEW` = `true`.
-- **`docs/claude-settings.example.json`** — repo-level plugin config (both marketplaces + both plugins enabled). Claude Code's sandbox rightly won't let an autonomous session write its own live settings, so a human flips the switch:
+- **`docs/claude-settings.example.json`** — repo-level config: both plugin marketplaces + both plugins enabled, plus a targeted permission allowlist (plugin management commands, the OmniRoute install, the local preview server, and read-only fetches of github.com / npm registry) so Claude needs fewer approvals in this repo. Claude Code's sandbox rightly won't let a session write its own live settings — even when asked in chat, since that's exactly how a hijacked agent would self-escalate — so a human flips the switch:
   ```bash
   mkdir -p .claude && cp docs/claude-settings.example.json .claude/settings.json
   ```
-  Commit that, and Claude Code offers caveman + superpowers to anyone who opens this repo.
+  Commit that, and every future session (cloud sessions included) starts with the plugins offered and those commands pre-approved.
 - **`CLAUDE.md`** — conventions for this site so any Claude session edits it correctly.
 
 ## One-time setup on your own machine (~2 minutes)
@@ -49,6 +49,14 @@ omniroute launch         # starts Claude Code routed through the gateway
 - **Structured edits**: for anything bigger than a typo in the SOP or Tour, superpowers' `/brainstorm` → plan → execute flow is worth it; it forces the "what exactly changes and why" step before HTML gets touched.
 - **Before merging**: run `/security-review` in Claude Code (same engine as the CI Action), especially since these pages ship to GitHub Pages.
 - **OmniRoute**: point high-volume, low-sensitivity work (bulk rewrites, format conversions, experiments) through the gateway; keep sensitive work on your direct Anthropic connection.
+
+## Getting more autonomy from Claude
+
+Three levers, from most to least targeted:
+
+1. **This repo**: run the `cp` command above and commit. The allowlist in it is deliberately narrow — widen it by adding rules to `.claude/settings.json` (`"Bash(npm *)"`-style prefix wildcards; run `/permissions` in Claude Code to manage them interactively).
+2. **Your machine, all projects**: `/permissions` in any Claude Code session adds user-level allow rules to `~/.claude/settings.json`; `/config` can set a more permissive default mode (e.g. `acceptEdits`).
+3. **Cloud sessions** (claude.ai/code): the permission mode is chosen per session/environment when you launch — the in-session agent can never raise its own mode, by design.
 
 ## The fine print (read once, it's short)
 
