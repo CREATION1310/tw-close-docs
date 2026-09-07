@@ -2,15 +2,15 @@
 # Mention @claude in an issue or PR comment (or an issue title/body) and Claude
 # answers, reviews, and can push fixes.
 #
-# Staged and inert until these one-time steps are done (owner only):
-#   1. Install the Claude GitHub App on this repo: https://github.com/apps/claude
-#   2. Add repo secret ANTHROPIC_API_KEY (Settings → Secrets and variables →
-#      Actions), an Anthropic API key enabled for Claude API + Claude Code.
-#   3. Add repo variable ENABLE_CLAUDE_MENTION = true (same page, Variables tab).
-# The `if` below keeps the job from running until step 3, so merging this cannot
-# break CI or fire before the secret exists.
-# (The `/install-github-app` command inside the Claude Code TUI automates 1 & 2;
-#  add the variable yourself to arm it.)
+# Authenticated with a Claude subscription via CLAUDE_CODE_OAUTH_TOKEN
+# (generated locally with `claude setup-token`) rather than a metered API key.
+# Armed by three one-time owner steps (all done):
+#   1. Repo secret CLAUDE_CODE_OAUTH_TOKEN (Settings → Secrets and variables → Actions).
+#   2. Repo variable ENABLE_CLAUDE_MENTION = true (same page, Variables tab) — the switch.
+#   3. Optional: install the Claude GitHub App (https://github.com/apps/claude) for a
+#      proper bot identity; without it the action falls back to the workflow token.
+# The `if` below keeps the job from running unless the variable is true, so it stays
+# inert if the switch is ever turned off.
 
 name: Claude Code
 
@@ -26,7 +26,7 @@ on:
 
 jobs:
   claude:
-    # Only run when @claude is actually mentioned, and only once the secret is set.
+    # Only run when the switch is on AND @claude is actually mentioned.
     if: |
       vars.ENABLE_CLAUDE_MENTION == 'true' && (
         (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
@@ -51,4 +51,4 @@ jobs:
         id: claude
         uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
