@@ -1,0 +1,35 @@
+# AI security review of pull requests, per anthropics/claude-code-security-review.
+#
+# Off by default so unconfigured PRs stay green. To activate:
+#   1. Settings → Secrets and variables → Actions → New repository secret:
+#      CLAUDE_API_KEY (an Anthropic API key enabled for Claude API + Claude Code)
+#   2. Same page, Variables tab → New repository variable:
+#      ENABLE_SECURITY_REVIEW = true
+#
+# Anthropic's caveat: the action is not hardened against prompt injection, so
+# only review trusted PRs — keep "Require approval for all external
+# contributors" enabled under Settings → Actions.
+
+name: Security Review
+
+permissions:
+  pull-requests: write
+  contents: read
+
+on:
+  pull_request:
+
+jobs:
+  security:
+    if: ${{ vars.ENABLE_SECURITY_REVIEW == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+
+      - uses: anthropics/claude-code-security-review@main
+        with:
+          comment-pr: true
+          claude-api-key: ${{ secrets.CLAUDE_API_KEY }}
