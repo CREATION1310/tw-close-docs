@@ -23,7 +23,7 @@
       "Bash(npm install -g omniroute)",
       "Bash(npm view *)",
       "Bash(python3 -m http.server *)",
-      "Bash(npx ccusage*)",
+      "Bash(npx ccusage@latest*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:registry.npmjs.org)"

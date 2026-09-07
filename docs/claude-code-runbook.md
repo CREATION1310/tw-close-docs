@@ -20,7 +20,7 @@ npx ccusage@latest blocks     # Claude's 5-hour billing windows, with live monit
 npx ccusage@latest --offline  # cached pricing, no network at all
 ```
 
-`Bash(npx ccusage*)` is in `docs/claude-settings.example.json`'s allow-list — read-only and local, so a session can run it on request without a prompt. Its `statusline` subcommand (Beta) can feed a live cost readout into Claude Code's status bar.
+`Bash(npx ccusage@latest*)` is in `docs/claude-settings.example.json`'s allow-list — read-only and local, so a session can run it on request without a prompt. (The rule pins `@latest` deliberately: a bare `ccusage*` glob would also auto-approve a typosquat like `npx ccusage-evil`.) Its `statusline` subcommand (Beta) can feed a live cost readout into Claude Code's status bar.
 
 ## #6 — the phone UI (CloudCLI / claudecodeui)
 
@@ -87,6 +87,14 @@ The rule is staged in `docs/claude-settings.example.json`. To make it live, re-c
 cp docs/claude-settings.example.json .claude/settings.json
 git add .claude/settings.json && git commit -m "Add ccusage to allowlist" && git push
 ```
+
+## Security review (2026-09-07)
+
+Reviewed the two workflows and the permission allowlists added this session:
+
+- **`.github/workflows/claude.yml` is the real surface.** It grants `contents`/`pull-requests`/`issues: write` and fires on any comment containing `@claude` — i.e. anyone who can comment can instruct a Claude that holds write access. That is acceptable **only while this repo stays private (or "Require approval for all external contributors" is on under Settings → Actions)**. Do not make this repo public without revisiting that — an external `@claude` comment would otherwise be a prompt-injection vector with write perms. No untrusted comment text flows into a shell `run:` step, so there's no script-injection path; the risk is purely the agent's own authority.
+- **`security-review.yml`** only exposes its secret to same-repo PRs (GitHub withholds secrets from fork PRs on `pull_request`), and it analyses rather than executes the diff. Its action accepts **only a pay-as-you-go API key** — there is no subscription/OAuth path — so it stays dormant until you add `CLAUDE_API_KEY` + `ENABLE_SECURITY_REVIEW=true`.
+- **Allowlist:** tightened the ccusage rule to `Bash(npx ccusage@latest*)` (a bare `ccusage*` would auto-approve typosquats). The rest are exact or read-only (`npm install -g omniroute`, `npm view`, `python3 -m http.server`, read-only WebFetch domains). As a general rule, prefer pinned/exact Bash allow-rules over open-ended globs.
 
 ## Security fine print (unchanged from the main toolkit)
 
