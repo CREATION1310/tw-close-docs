@@ -1,0 +1,54 @@
+# @claude on GitHub — anthropics/claude-code-action.
+# Mention @claude in an issue or PR comment (or an issue title/body) and Claude
+# answers, reviews, and can push fixes.
+#
+# Staged and inert until these one-time steps are done (owner only):
+#   1. Install the Claude GitHub App on this repo: https://github.com/apps/claude
+#   2. Add repo secret ANTHROPIC_API_KEY (Settings → Secrets and variables →
+#      Actions), an Anthropic API key enabled for Claude API + Claude Code.
+#   3. Add repo variable ENABLE_CLAUDE_MENTION = true (same page, Variables tab).
+# The `if` below keeps the job from running until step 3, so merging this cannot
+# break CI or fire before the secret exists.
+# (The `/install-github-app` command inside the Claude Code TUI automates 1 & 2;
+#  add the variable yourself to arm it.)
+
+name: Claude Code
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  claude:
+    # Only run when @claude is actually mentioned, and only once the secret is set.
+    if: |
+      vars.ENABLE_CLAUDE_MENTION == 'true' && (
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      )
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read # Required for Claude to read CI results on PRs
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Code
+        id: claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
