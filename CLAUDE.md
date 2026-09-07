@@ -22,3 +22,4 @@ Static GitHub Pages site: Trade Wings Capital's internal Close CRM documentation
 - Run `/security-review` before merging non-trivial changes; the CI equivalent lives in `.github/workflows/security-review.yml` (activation steps in `docs/claude-toolkit.md`).
 - `docs/claude-toolkit.md` documents the full recommended toolchain (OmniRoute gateway included) and its security fine print.
 - `docs/claude-code-top10.md` is the researched shortlist of further upgrades (document skills, @claude GitHub app, browser MCP, phone UI, usage analytics) with verified installs.
+- `docs/claude-code-runbook.md` stages two of those — ccusage (token/cost reports) and the phone UI — with verified commands and the remote-access security guidance for the phone UI.
