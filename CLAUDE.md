@@ -21,3 +21,4 @@ Static GitHub Pages site: Trade Wings Capital's internal Close CRM documentation
 - Recommended plugins (caveman, superpowers) and a pre-approved command allowlist that gives Claude more autonomy in this repo: activate both by copying `docs/claude-settings.example.json` to `.claude/settings.json` (a human does this once — see `docs/claude-toolkit.md`), or install the plugins user-level with the commands documented there.
 - Run `/security-review` before merging non-trivial changes; the CI equivalent lives in `.github/workflows/security-review.yml` (activation steps in `docs/claude-toolkit.md`).
 - `docs/claude-toolkit.md` documents the full recommended toolchain (OmniRoute gateway included) and its security fine print.
+- `docs/claude-code-top10.md` is the researched shortlist of further upgrades (document skills, @claude GitHub app, browser MCP, phone UI, usage analytics) with verified installs.
