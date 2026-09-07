@@ -44,11 +44,8 @@ Claude Code tools are **disabled by default** in CloudCLI — enable only what y
 
 ## The other six — documented, add per need
 
-### #3 — wshobson/agents (specialist subagent marketplace)
-```bash
-claude plugin marketplace add wshobson/agents
-```
-Then `/plugin` inside Claude Code to install **only** the packs you want (e.g. a language or domain pack). Don't enable all 200+ — that's the context-bloat trap. Third-party prompts; skim a pack before enabling.
+### #3 — wshobson/agents (specialist subagent marketplace) — MARKETPLACE STAGED
+The marketplace is staged in `docs/claude-settings.example.json` (`extraKnownMarketplaces` → `wshobson-agents`), so once that's applied it's already "known" here — you just run `/plugin` inside Claude Code and install **only** the pack you want (e.g. a language or domain pack). Don't enable all 200+ — that's the context-bloat trap. Third-party prompts; skim a pack before enabling. To make it known globally instead: `claude plugin marketplace add wshobson/agents`.
 
 ### #4 — claude-task-master (cross-session project planning)
 Keyless via your Claude Code auth:
@@ -57,11 +54,8 @@ claude mcp add task-master-ai -- npx -y task-master-ai
 ```
 Add it to a specific project when you have a multi-week, many-part effort (an enforcement-file pipeline, a site overhaul) — not to every session. In chat: "Initialize taskmaster in my project."
 
-### #5 — microsoft/playwright-mcp (real browser control)
-```bash
-claude mcp add playwright npx @playwright/mcp@latest
-```
-Add on the days you need Claude to open the live Pages site, click through the Close Tour, screenshot, or fill web forms. Lighter alternative you already run: [obra/superpowers-chrome](https://github.com/obra/superpowers-chrome).
+### #5 — microsoft/playwright-mcp (real browser control) — WIRED INTO THIS REPO
+Now declared in this repo's `.mcp.json` and pre-approved in `docs/claude-settings.example.json` (`enabledMcpjsonServers`). On the next `claude` session in this repo, Claude Code offers to enable it (approve the one-time trust prompt; or apply the settings example to skip even that). It earns its place here because QA-ing the published site is exactly what this repo is for — use it to open `index.html`/`tour.html`/`sop.html`, click through, and screenshot after edits. Lighter alternative you already run: [obra/superpowers-chrome](https://github.com/obra/superpowers-chrome). To add it to *another* project manually: `claude mcp add playwright npx @playwright/mcp@latest`.
 
 ### #8 — davila7/claude-code-templates (component catalog + analytics)
 ```bash
