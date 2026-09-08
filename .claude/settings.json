@@ -11,18 +11,28 @@
         "source": "github",
         "repo": "obra/superpowers-marketplace"
       }
+    },
+    "wshobson-agents": {
+      "source": {
+        "source": "github",
+        "repo": "wshobson/agents"
+      }
     }
   },
   "enabledPlugins": {
     "caveman@caveman": true,
     "superpowers@superpowers-marketplace": true
   },
+  "enabledMcpjsonServers": [
+    "playwright"
+  ],
   "permissions": {
     "allow": [
       "Bash(claude plugin *)",
       "Bash(npm install -g omniroute)",
       "Bash(npm view *)",
       "Bash(python3 -m http.server *)",
+      "Bash(npx ccusage@latest*)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:registry.npmjs.org)"
